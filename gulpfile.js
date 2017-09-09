@@ -10,6 +10,7 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
 const gutil = require('gulp-util');
+const del = require('del');
 
 gulp.task('browserSync', () => {
   browserSync.init({
@@ -18,6 +19,8 @@ gulp.task('browserSync', () => {
     }
   });
 });
+
+gulp.task('clean', () => del.sync('build'));
 
 gulp.task('js', () => {
   const b = browserify({
@@ -37,7 +40,7 @@ gulp.task('js', () => {
     .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('build', ['js'], () => gulp.src(['app/**/*.html', 'app/**/*.css'])
+gulp.task('build', ['js', 'clean'], () => gulp.src(['app/**/*.html', 'app/**/*.css'])
   .pipe(print())
   .pipe(gulpIf('*.css', cssnano()))
   .pipe(gulpIf('*.html', htmlmin({ collapseWhitespace: true })))
