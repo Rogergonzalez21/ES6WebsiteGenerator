@@ -29,7 +29,7 @@ gulp.task('js', () => {
     .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('build', ['js', 'libs'], () => gulp.src(['app/**/*.html', 'app/**/*.css'])
+gulp.task('build', ['js'], () => gulp.src(['app/**/*.html', 'app/**/*.css'])
   .pipe(print())
   .pipe(gulpIf('*.css', cssnano()))
   .pipe(gulpIf('*.html', htmlmin({ collapseWhitespace: true })))
