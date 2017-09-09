@@ -1,0 +1,36 @@
+{
+  "name": "barbaric-toolbox-gulp",
+  "version": "1.0.0",
+  "description": "Sample code for the Barbaric Toolbox Gulp Series",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.5.0",
+    "babelify": "^7.3.0",
+    "gulp": "^3.9.1",
+    "gulp-print": "^2.0.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "gulp-webserver": "^0.9.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "browserify": "^14.4.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vintharas/barbaric-toolbox-gulp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vintharas/barbaric-toolbox-gulp/issues"
+  },
+  "homepage": "https://github.com/Vintharas/barbaric-toolbox-gulp#readme"
+}
