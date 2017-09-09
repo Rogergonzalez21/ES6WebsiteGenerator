@@ -1,6 +1,6 @@
 const gulp = require('gulp');
 const print = require('gulp-print');
-const webserver = require('gulp-webserver');
+const browserSync = require('browser-sync').create();
 const gulpIf = require('gulp-if');
 const htmlmin = require('gulp-htmlmin');
 const cssnano = require('gulp-cssnano');
@@ -10,6 +10,14 @@ const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
 const gutil = require('gulp-util');
+
+gulp.task('browserSync', () => {
+  browserSync.init({
+    server: {
+      baseDir: 'build'
+    }
+  });
+});
 
 gulp.task('js', () => {
   const b = browserify({
@@ -35,11 +43,6 @@ gulp.task('build', ['js'], () => gulp.src(['app/**/*.html', 'app/**/*.css'])
   .pipe(gulpIf('*.html', htmlmin({ collapseWhitespace: true })))
   .pipe(gulp.dest('build')));
 
-gulp.task('serve', ['watch'], () => {
-  gulp.src('build')
-    .pipe(webserver({ open: true, livereload: true }));
-});
-
-gulp.task('watch', () => {
-  gulp.watch('app/**/*.*', ['build']);
+gulp.task('serve', ['browserSync'], () => {
+  gulp.watch('app/**/*.*', ['build', browserSync.reload]);
 });
